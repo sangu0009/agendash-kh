@@ -214,14 +214,21 @@
       var cookieValue = getCookie("token");
 
       if (!cookieValue) {
-        console.log(window.location);
         if (
           window.location.host.includes("http") ||
           window.location.host.includes("https")
         ) {
-          window.location.href = `${window.location.host}/login`;
+          if (window.location.host.includes("prismapi.knowledgehut.com")) {
+            window.location.href = `https://${window.location.host}/login`;
+          } else {
+            window.location.href = `${window.location.host}/login`;
+          }
         } else {
-          window.location.href = `http://${window.location.host}/login`;
+          if (window.location.host.includes("prismapi.knowledgehut.com")) {
+            window.location.href = `https://${window.location.host}/login`;
+          } else {
+            window.location.href = `http://${window.location.host}/login`;
+          }
         }
       }
     </script>
